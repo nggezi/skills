@@ -4,7 +4,7 @@ My personal AI agent skills manifest.
 
 ## Quick Install
 
-Run the install script to install all skills from the manifest:
+Run the install script to install all skills:
 
 **Windows PowerShell:**
 ```powershell
@@ -16,11 +16,56 @@ Run the install script to install all skills from the manifest:
 bash install-skills.sh
 ```
 
+The script will:
+1. Install all skills listed in `skills.json` (from public ecosystem)
+2. Copy all custom skills from the `custom/` folder
+
+## Repository Structure
+
+```
+skills/
+├── skills.json              # Public skills manifest
+├── install-skills.ps1       # Windows install script
+├── install-skills.sh        # Bash install script
+├── README.md
+├── custom/                  # Your own custom skills (not on public registry)
+│   └── add-api-provider/
+│       └── SKILL.md
+└── evals/                   # (optional) Test cases for skill development
+```
+
+## Skills Locations
+
+**Public skills** (installed via `skills.json`):
+- Installed to `~/.agents/skills/` using `npx skills add`
+- Updated from original sources each time you run the install script
+
+**Custom skills** (in `custom/` folder):
+- Copied directly to `~/.agents/skills/`
+- You maintain these yourself — they're not on any public registry
+- Edit them in this repo and reinstall to update
+
+## Adding/Removing Skills
+
+### Public skills
+Edit `skills.json` and add/remove entries from the `skills` array:
+
+```json
+{
+  "skills": [
+    "owner/repo@skill-name"
+  ]
+}
+```
+
+### Custom skills
+Add a new folder under `custom/` with a `SKILL.md` file inside. The folder name becomes the skill name.
+
 ## What are Skills?
 
 Skills are reusable capabilities for AI agents. They extend your agent with specialized knowledge, workflows, and tools.
 
-## Current Skills
+## Current Public Skills
 
 | Category | Skill | Description |
 |----------|-------|-------------|
@@ -37,17 +82,17 @@ Skills are reusable capabilities for AI agents. They extend your agent with spec
 | Dev Flow | caveman | Code compression, review, commit tools |
 | Dev Flow | systematic-debugging | Systematic debugging methodology |
 
-## How It Works
+## Current Custom Skills
 
-This repo contains a `skills.json` manifest file that lists all skills with their sources. When you run the install script, it reads the manifest and installs the latest versions of each skill from their original sources.
+| Skill | Description |
+|-------|-------------|
+| add-api-provider | Add custom API providers to opencode configuration |
 
 ## Updating Skills
 
-To update all skills to their latest versions:
+To update all public skills to their latest versions, just run the install script again:
 
 ```powershell
-# First update the manifest if needed (edit skills.json)
-# Then reinstall
 .\install-skills.ps1
 ```
 
@@ -56,3 +101,5 @@ Or use the skills CLI directly:
 ```bash
 npx skills update
 ```
+
+Custom skills are updated by editing the files in `custom/` and reinstalling.
