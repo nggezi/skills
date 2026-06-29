@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": [
+    "vercel-labs/skills@find-skills",
+    "anthropics/skills@frontend-design",
+    "anthropics/skills@skill-creator",
+    "vercel-labs/agent-browser@agent-browser",
+    "vercel-labs/agent-skills@vercel-react-best-practices",
+    "vercel-labs/agent-skills@web-design-guidelines",
+    "shadcn/ui@shadcn",
+    "mattpocock/skills@tdd",
+    "mattpocock/skills@grill-me",
+    "mattpocock/skills@improve-codebase-architecture",
+    "juliusbrussee/caveman@caveman",
+    "obra/superpowers@systematic-debugging"
+  ]
+}
